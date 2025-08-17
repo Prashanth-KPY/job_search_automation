@@ -1,0 +1,44 @@
+name: Daily Fresher Job Search (7 AM IST)
+
+on:
+  schedule:
+    # 01:30 UTC == 07:00 IST
+    - cron: '30 1 * * *'
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install deps
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run job search
+        env:
+          BING_SEARCH_ENDPOINT: ${{ secrets.BING_SEARCH_ENDPOINT }}
+          BING_SEARCH_KEY: ${{ secrets.BING_SEARCH_KEY }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+          EMAIL_FROM: ${{ secrets.EMAIL_FROM }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          STATE_PATH: job_state.json
+        run: |
+          python daily_job_search.py
+          
+      - name: Upload state artifact (optional)
+        uses: actions/upload-artifact@v4
+        with:
+          name: state
+          path: job_state.json
+          if-no-files-found: ignore
