@@ -17,23 +17,27 @@ pip install -r requirements.txt
 ```
 Step 2: Configure environment variables (via .env or system settings)
 Example setup for Gmail SMTP:
-```
-.env
-# Bing Search
-BING_SEARCH_ENDPOINT=https://api.bing.microsoft.com/v7.0/search
-BING_SEARCH_KEY=YOUR_AZURE_BING_KEY
+To run this project smoothly, you’ll need to set up a .env file or manually configure the required environment variables. These include your email credentials and API key for Bing Search.
 
-# Email (SMTP)
+Here’s what you need to add in .env:
+```
+# Bing Search API
+BING_SEARCH_ENDPOINT=https://api.bing.microsoft.com/v7.0/search
+BING_SEARCH_KEY=YOUR_AZURE_BING_KEY   # Get this from your Azure portal
+
+# Email Setup (SMTP)
 SMTP_HOST=smtp.gmail.com
 SMTP_PORT=587
 SMTP_USER=your@gmail.com
-SMTP_PASS=your_app_password   # Use app password if 2FA is enabled
+SMTP_PASS=your_app_password           # Use Gmail app password if 2FA is enabled
 EMAIL_FROM=your@gmail.com
-EMAIL_TO=recipient@example.com
+EMAIL_TO=recipient@example.com        # Where you want the job links to be sent
 
 # Optional
-STATE_PATH=job_state.json
+STATE_PATH=job_state.json             # Tracks which job links have already been sent
 ```
+Without this setup, the script won’t be able to send emails or fetch job listings. So either create a .env file with these details or set them directly in your system environment.
+
 Step 3: Dry run (no email sent)
 ```
 bash
