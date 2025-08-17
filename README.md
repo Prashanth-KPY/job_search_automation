@@ -16,6 +16,7 @@ It uses the **Azure Bing Web Search API**, so it doesn’t scrape job sites dire
 pip install -r requirements.txt
 ```
 Step 2: Configure environment variables (via .env or system settings)
+
 Example setup for Gmail SMTP:
 To run this project smoothly, you’ll need to set up a .env file or manually configure the required environment variables. These include your email credentials and API key for Bing Search.
 
