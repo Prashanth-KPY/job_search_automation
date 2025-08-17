@@ -89,7 +89,8 @@ I'm Konda Prashanth, a B.Tech graduate in Data Science from MLR Institute of Tec
 
 This project reflects my mindset: clarity, automation, and impact—helping freshers stay informed and job-ready every single day.
 
--📬 Connect With Me
+📬 Connect With Me:
+
 -📧 Email: kondadattathri@gmail.com
 
 -💼 LinkedIn: [prashanth-kpy](linkedin.com/in/prashanth-kpy)
