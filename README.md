@@ -14,10 +14,11 @@ It uses the **Azure Bing Web Search API**, so it doesn’t scrape job sites dire
 ### Step 1: Install dependencies
 ```bash
 pip install -r requirements.txt
+```
 Step 2: Configure environment variables (via .env or system settings)
 Example setup for Gmail SMTP:
-
-env
+```
+.env
 # Bing Search
 BING_SEARCH_ENDPOINT=https://api.bing.microsoft.com/v7.0/search
 BING_SEARCH_KEY=YOUR_AZURE_BING_KEY
@@ -32,24 +33,31 @@ EMAIL_TO=recipient@example.com
 
 # Optional
 STATE_PATH=job_state.json
+```
 Step 3: Dry run (no email sent)
+```
 bash
 python daily_job_search.py --dry-run
+```
 Step 4: Send actual email
+```
 bash
 python daily_job_search.py
+```
 ⏰ Automate with Cron (Linux)
 If your system timezone is IST:
-
+```
 bash
 0 7 * * * /usr/bin/env -S bash -lc 'cd /path/to/job_search_automation && /usr/bin/python3 daily_job_search.py >> cron.log 2>&1'
+```
 If your server runs in UTC (7:00 AM IST = 01:30 UTC):
-
+```
 bash
 30 1 * * * /usr/bin/env -S bash -lc 'cd /path/to/job_search_automation && /usr/bin/python3 daily_job_search.py >> cron.log 2>&1'
+```
 🧪 GitHub Actions (Auto-run Daily)
 Use the workflow at .github/workflows/job-search.yml. Add these secrets in your repo settings:
-
+```
 BING_SEARCH_ENDPOINT
 
 BING_SEARCH_KEY
@@ -57,7 +65,7 @@ BING_SEARCH_KEY
 SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS
 
 EMAIL_FROM, EMAIL_TO
-
+```
 🔎 What It Searches
 Roles: Software Developer, SDE, Backend, Frontend, Full Stack, QA, ML, DevOps, SRE
 
@@ -84,4 +92,4 @@ This project reflects my mindset: clarity, automation, and impact—helping fres
 -📬 Connect With Me
 -📧 Email: kondadattathri@gmail.com
 
--💼 LinkedIn: linkedin.com/in/prashanth-kpy
+-💼 LinkedIn: [prashanth-kpy](linkedin.com/in/prashanth-kpy)
